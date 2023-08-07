@@ -1,13 +1,15 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Login from '../screens/login';
-import Home from '../screens/home';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "../screens/login";
+import Home from "../screens/home";
+import Details from "../screens/details";
 
 // Objeto com as telas do Stack
 type RootStackParamList = {
   Login: undefined;
   Home: undefined;
+  Details: { followers_url: string };
 };
 
 const Stack = createNativeStackNavigator();
@@ -34,7 +36,20 @@ const Routes = () => {
           name="Home"
           component={Home}
           options={{
-            title: 'Listagem de projetos',
+            title: "Listagem de repositórios",
+            headerStyle: {
+              backgroundColor: "#778899",
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{
+            title: "Detalhe",
+            headerStyle: {
+              backgroundColor: "#778899",
+            },
           }}
         />
       </Stack.Navigator>
